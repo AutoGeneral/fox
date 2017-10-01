@@ -1,0 +1,3 @@
+--recursive
+--check-leaks
+{server,web,tests}/**/*.spec.js

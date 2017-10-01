@@ -1,0 +1,9 @@
+**/*
+!config/*
+!server/*
+!web/*
+!Gruntfile.js
+!grunt-tasks/*
+!package.json
+!yarn.lock
+!server.js

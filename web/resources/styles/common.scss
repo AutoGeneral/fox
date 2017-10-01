@@ -1,0 +1,18 @@
+body,
+html {
+	font-family: $base-font-family;
+	height: 100%;
+}
+
+h1 {
+	font-size: 18px;
+	text-align: center;
+	font-weight: 400;
+	color: $secondary-colour;
+	font-family: $second-font-family;
+}
+
+// Minor helpers
+a[ng-click] {
+	cursor: pointer;
+}

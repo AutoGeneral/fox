@@ -1,0 +1,46 @@
+$logo-colour: black;
+
+header {
+	@include user-select(none);
+	padding: 16px;
+	clear: both;
+}
+
+.logo-caption {
+	font-size: 24px;
+	display: inline-block;
+	color: $logo-colour;
+	font-family: $second-font-family;
+}
+
+.tabs {
+	margin: 0 20px;
+	display: inline-block;
+
+	&__tab {
+		a {
+			display: inline-block;
+			text-decoration: none;
+			padding: 6px 10px 5px;
+			color: $main-colour;
+			font-size: 14px;
+			font-weight: bold;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+
+			&.selected {
+				background-color: $main-colour;
+				color: white;
+				cursor: default;
+
+				&:hover {
+					color: white;
+				}
+			}
+
+			&:hover {
+				color: darken($main-colour, 20%);
+			}
+		}
+	}
+}

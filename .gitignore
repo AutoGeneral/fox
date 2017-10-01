@@ -1,0 +1,17 @@
+*.iml
+.idea
+
+config/*.json
+!config/default.json
+
+*.log*
+
+.grunt
+
+node_modules
+.nyc_output
+coverage
+
+dist/
+
+*.xml

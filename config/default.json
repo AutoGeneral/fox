@@ -1,0 +1,144 @@
+{
+	"server": {
+		"port": 8080,
+		"host": "0.0.0.0"
+	},
+	"logs": {
+		"level": "warn",
+		"json": true
+	},
+	"schedulerNotifications": {
+		"name": "SESNotification",
+		"accessKeyId": "AKIABCDEFGHIJKLMNOPQ",
+		"secretAccessKey": "abcdefghijkpmnopqrstuv+abcdefghjijklmop",
+		"to": [
+			"user@email.com"
+		],
+		"from": "\"Fox\" <test@email.com>"
+	},
+	"dataSources": {
+		"NewRelicInsights": {
+			"accountId": 1,
+			"apiKey": "abcdefghij-123"
+		},
+		"Cloudwatch": {
+			"region": "ap-southeast-2",
+			"accessKeyId": "AKIABCDEFGHIJKLMNOPQ",
+			"secretAccessKey": "abcdefghijkpmnopqrstuv+abcdefghjijklmop"
+		},
+		"MySQL": {
+			"host": "db.local",
+			"user": "foobar",
+			"password": "password123",
+			"database": "MyData",
+			"timeslice": 15
+		}
+	},
+	"notifications": {
+		"SESNotification": {
+			"accessKeyId": "AKIABCDEFGHIJKLMNOPQ",
+			"secretAccessKey": "abcdefghijkpmnopqrstuv+abcdefghjijklmop",
+			"to": [
+				"user@email.com"
+			],
+			"from": "\"Fox\" <test@email.com>"
+		},
+		"VictorOpsNotification": {
+			"hashKey": "test",
+			"routingKey": "test"
+		}
+	},
+	"metrics": {
+		"count:CarsSold": {
+			"description": "Cars sold",
+			"tab": "SuperProject",
+			"dataSource": "NewRelicInsights",
+			"dataSourceQueries": [
+				"SELECT count(*) FROM Transaction SINCE 1 days ago TIMESERIES 15 minutes"
+			],
+			"detection": "EmaBasedDetection.isPointOutsideEnvelopeStrategy",
+			"detectionParams": {
+				"emaInterval": 5,
+				"envelopKoeff": 0.3,
+				"ignoreHours": [
+					"23:00",
+					"01:00"
+				]
+			},
+			"updateInterval": 900000
+		},
+		"ADMIN:getAllLogins": {
+			"description": "Total login attempts",
+			"tab": "OPM",
+			"dataSource": "MySQL",
+			"dataSourceQueries": [
+				{
+					"query": "SELECT timestamp as timestamp FROM login_history WHERE timestamp >= ?",
+					"timeslice": 15
+				}
+			],
+			"detection": "EmaBasedDetection.isPointOutsideEnvelopeStrategy",
+			"detectionParams": {
+				"emaInterval": 3,
+				"envelopKoeff": 0.6,
+				"ignoreHours": [
+					"23:00",
+					"01:00"
+				]
+			},
+			"updateInterval": 900000
+		},
+		"ADMIN:getSuccessfulLogins": {
+			"description": "Successful login attempts",
+			"tab": "OPM",
+			"dataSource": "MySQL",
+			"dataSourceQueries": [
+				{
+					"query": "SELECT timestamp as timestamp FROM login_history WHERE status='OK' AND timestamp >= ?",
+					"timeslice": 15
+				}
+			],
+			"detection": "EmaBasedDetection.isPointOutsideEnvelopeStrategy",
+			"detectionParams": {
+				"emaInterval": 3,
+				"envelopKoeff": 0.6,
+				"ignoreHours": [
+					"23:00",
+					"01:00"
+				]
+			},
+			"updateInterval": 900000
+		},
+		"ADMIN:getFailedLogins": {
+			"description": "Failed login attempts",
+			"tab": "OPM",
+			"dataSource": "MySQL",
+			"dataSourceQueries": [
+				{
+					"query": "SELECT timestamp as timestamp FROM login_history WHERE status!='OK' AND timestamp >= ?",
+					"timeslice": 15
+				}
+			],
+			"detection": "EmaBasedDetection.isPointOutsideEnvelopeStrategy",
+			"detectionParams": {
+				"emaInterval": 3,
+				"envelopKoeff": 0.6,
+				"ignoreHours": [
+					"23:00",
+					"01:00"
+				]
+			},
+			"updateInterval": 900000
+		}
+	},
+	"eureka": {
+		"serviceUrls": {
+			"ap-southeast-2a": [
+				"http://eureka-peer-01.local"
+			],
+			"ap-southeast-2b": [
+				"http://eureka-peer-02.local"
+			]
+		}
+	}
+}

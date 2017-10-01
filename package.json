@@ -1,0 +1,74 @@
+{
+  "name": "fox",
+  "version": "2.5.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha --opts mocha.opts",
+    "test-ci": "nyc --reporter=text-summary --reporter=html mocha --opts mocha.opts --reporter mocha-junit-reporter",
+    "lint": "prettier --single-quote --trailing-comma none --use-tabs --tab-width 4 \"{server,{server,web,tests}/**/*}.+(js|json|scss)\" --write",
+    "build": "grunt build",
+    "start": "grunt serve"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">6.9.2"
+  },
+  "dependencies": {
+    "aws-sdk": "2.5.4",
+    "eureka-js-client": "4.3.0",
+    "gauss": "0.2.12",
+    "lokijs": "1.5.0",
+    "mkdirp": "0.5.1",
+    "moment": "2.14.1",
+    "mysql": "2.5.4",
+    "nodemailer": "2.6.4",
+    "nodemailer-ses-transport": "1.5.0",
+    "proxy-agent": "2.0.0",
+    "request-promise": "3.0.0",
+    "restify": "4.1.1",
+    "socket.io": "1.4.8",
+    "winston": "2.2.0"
+  },
+  "devDependencies": {
+    "angular": "1.5.8",
+    "angular-socket-io": "0.7.0",
+    "angular-ui-router": "0.3.1",
+    "babel-preset-es2015": "6.13.2",
+    "babelify": "7.3.0",
+    "dygraphs": "1.1.1",
+    "eslint": "3.10.2",
+    "grunt": "1.0.1",
+    "grunt-browserify": "5.0.0",
+    "grunt-cli": "1.2.0",
+    "grunt-contrib-clean": "1.0.0",
+    "grunt-contrib-connect": "1.0.2",
+    "grunt-contrib-copy": "1.0.0",
+    "grunt-contrib-cssmin": "1.0.1",
+    "grunt-contrib-uglify": "2.0.0",
+    "grunt-contrib-watch": "1.0.0",
+    "grunt-develop": "0.4.0",
+    "grunt-sass": "1.2.1",
+    "load-grunt-configs": "1.0.0",
+    "load-grunt-tasks": "3.5.2",
+    "mocha": "3.4.2",
+    "mocha-junit-reporter": "1.12.0",
+    "ng-dialog": "0.6.4",
+    "node-bourbon": "4.2.8",
+    "node-neat": "1.7.2",
+    "nyc": "11.0.3",
+    "prettier": "1.5.3",
+    "time-grunt": "1.4.0"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015"
+          ]
+        }
+      ]
+    ]
+  }
+}
