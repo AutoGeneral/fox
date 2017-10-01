@@ -4,6 +4,8 @@
 
 Real-time anomaly detection application, from multiple sources.
 
+![Fox in action](resources/screenshot.png)
+
 ## Getting Started
 
 ```sh
