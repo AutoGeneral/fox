@@ -12,9 +12,9 @@ const PREVIOUS_VALUE_LABEL = 'Previous Value';
 
 const TEMPLATE = `
 	<h1 class="standard-chart__header">
-		{{$ctrl.options.description}} 
+		{{$ctrl.options.description}}
 		<sup
-			class="standard-chart__events-count" 
+			class="standard-chart__events-count"
 			ng-click="$ctrl.EventPopup.open($ctrl.options.description, $ctrl._events)"
 			ng-show="$ctrl._events.length">{{$ctrl._events.length}}</sup>
 	</h1>
@@ -23,12 +23,15 @@ const TEMPLATE = `
 
 class StandardChart {
 	constructor($element, $http, ngDialog, Sockets) {
+		'ngInject';
+
 		this._graphContainer = $element.find('div')[0];
 		this._parentContainer = $element.parent();
 		this._graph = null;
 		this._points = [];
 		this._events = [];
 		this._ignored = [];
+		console.log(35, 'standard.chart.component.js',this);
 		this._style = this.options.style;
 
 		// Adjust parent container width
@@ -188,8 +191,8 @@ export default {
 	template: TEMPLATE,
 	controller: StandardChart,
 	bindings: {
-		datasource: '=',
-		options: '=',
-		socket: '='
+		datasource: '@',
+		options: '@',
+		socket: '@'
 	}
 };

@@ -1,6 +1,6 @@
 import 'angular';
 import 'ng-dialog';
-import 'angular-ui-router';
+import '@uirouter/angularjs';
 import './core/sockets.service'; // please read description inside the file
 import 'angular-socket-io';
 
@@ -9,15 +9,24 @@ import modules from './modules';
 // Initial app config
 angular
 	.module(
-		window.APP_NAME,
+		APP_NAME,
 		['ui.router', 'btford.socket-io', 'ngDialog'].concat(modules)
 	)
 	.config(configuration)
 	.run(init);
 
-function configuration($locationProvider, $stateProvider, $urlRouterProvider) {
+function configuration(
+	$compileProvider,
+	$locationProvider,
+	$stateProvider,
+	$urlRouterProvider
+) {
+	'ngInject';
+
 	$locationProvider.html5Mode(false);
 	$urlRouterProvider.otherwise('/');
+
+	$compileProvider.preAssignBindingsEnabled(true);
 
 	$stateProvider.state('index', {
 		url: '/:tab',

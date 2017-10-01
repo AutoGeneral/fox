@@ -20,6 +20,8 @@ const TEMPLATE = `
 
 class EventPopup {
 	constructor(ngDialog) {
+		'ngInject';
+
 		this.ngDialog = ngDialog;
 	}
 

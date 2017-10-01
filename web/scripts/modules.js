@@ -13,9 +13,9 @@ import IndexPage from './pages/index.page';
 
 // Application modules list
 const appModules = [
-	`${window.APP_NAME}.core`,
-	`${window.APP_NAME}.pages`,
-	`${window.APP_NAME}.components`
+	`${APP_NAME}.core`,
+	`${APP_NAME}.pages`,
+	`${APP_NAME}.components`
 ];
 
 // Create modules
@@ -25,17 +25,17 @@ appModules.forEach(moduleName =>
 
 // Register core services
 angular
-	.module(`${window.APP_NAME}.core`)
+	.module(`${APP_NAME}.core`)
 	.constant('Constants', Constants)
 	.service('Sockets', Sockets);
 
 // Register components
 angular
-	.module(`${window.APP_NAME}.components`)
+	.module(`${APP_NAME}.components`)
 	.component('header', HeaderComponent)
 	.component('standardChart', StandardChartComponent);
 
 // Register pages
-angular.module(`${window.APP_NAME}.pages`).component('indexPage', IndexPage);
+angular.module(`${APP_NAME}.pages`).component('indexPage', IndexPage);
 
 export default appModules;

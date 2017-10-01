@@ -1,5 +1,5 @@
 const TEMPLATE = `
-	<div class="logo-caption">Fox</div>
+	<div class="logo-caption">Fox Mulder</div>
 
 	<div class="tabs">
 		<span class="tabs__tab" ng-repeat="(name, charts) in $ctrl.tabs">
@@ -16,6 +16,8 @@ const TEMPLATE = `
  */
 class HeaderComponent {
 	constructor($rootScope, Constants) {
+		'ngInject';
+
 		this.tabs = {};
 		$rootScope.$on(
 			Constants.Event.TAB_UPDATE,

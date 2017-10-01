@@ -1,12 +1,12 @@
 const DEFAULT_TAB = 'Default';
 const TEMPLATE = `
 	<div ng-repeat="chart in $ctrl.tabs[$ctrl.currentTab].metrics">
-		
-		<standard-chart 
-			datasource="chart.src" 
+
+		<standard-chart
+			datasource="chart.src"
 			options="chart.options"
 			socket="chart.socket"></standard-chart>
-			
+
 	</div>
 `;
 
@@ -16,6 +16,8 @@ const TEMPLATE = `
  */
 class IndexPage {
 	constructor($http, $rootScope, $scope, Constants) {
+		'ngInject';
+
 		this.Constants = Constants;
 		this.tabs = {};
 		this.currentTab = DEFAULT_TAB;
