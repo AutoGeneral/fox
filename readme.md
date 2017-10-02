@@ -25,16 +25,6 @@ docker run --rm -d -p 127.0.0.1:8082:8080 --env ENV=production fox
 Read [customisation.md](customisation.md) to learn how to create your own components: data intervals, detections
 and notifications.
 
-## Roadmap
-
-- [ ] ability to load third party modules
-- [ ] temporary disable alarms by api
-- [ ] documentation
-- [ ] remove hardcoded utcOffset
-- [ ] more tests
-- [x] complex notifications (if 5 events across all the metrics were found in the last 5 minutes then send a notification)
-- [ ] multidimensional new relic data, data without facet
-
 ## Configuration
 
 Use `config` environment variable to pass a path to configuration JSON file, for example:
