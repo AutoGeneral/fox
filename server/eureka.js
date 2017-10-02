@@ -12,9 +12,7 @@ const appName = `${process.env.APPLICATION_NAME ||
 	name}-V${version[0]}.${version[1]}`;
 
 module.exports = {
-	start(configPath) {
-		const config = require(configPath);
-
+	start(config) {
 		if (!config.eureka) {
 			return;
 		}
