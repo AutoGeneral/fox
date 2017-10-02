@@ -28,7 +28,7 @@ class Application {
 			console.error(
 				`Error! Cannot find config file. Existing now...`,
 				ex
-			); // eslint-disable-line no-console
+			);
 			process.exit(1);
 		}
 

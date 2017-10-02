@@ -32,11 +32,11 @@ class VictorOpsNotification {
 			url: this._url,
 			method: 'POST',
 			body: {
-				entity_id: `${metricName}:${dataPoint.timestamp}`, // eslint-disable-line camelcase
-				state_start_time: dataPoint.timestamp, // eslint-disable-line camelcase
-				message_type: 'WARNING', // eslint-disable-line camelcase
-				state_message: `Anomaly detected in metric ${metricName} - value ${dataPoint.value}`, // eslint-disable-line camelcase
-				monitoring_tool: 'Fox' // eslint-disable-line camelcase
+				entity_id: `${metricName}:${dataPoint.timestamp}`,
+				state_start_time: dataPoint.timestamp,
+				message_type: 'WARNING',
+				state_message: `Anomaly detected in metric ${metricName} - value ${dataPoint.value}`,
+				monitoring_tool: 'Fox'
 			},
 			json: true
 		})
