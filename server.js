@@ -1,6 +1,5 @@
 const path = require('path');
 const Application = require('./server/app').Application;
-const Eureka = require('./server/eureka');
 
 let configPath = `${__dirname}/config/default.json`;
 if (process.env.config) {
@@ -17,5 +16,3 @@ configPath = path.normalize(configPath);
 
 const FoxApp = new Application(configPath);
 FoxApp.start();
-
-Eureka.start(configPath);

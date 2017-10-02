@@ -35,6 +35,13 @@ class Application {
 		this._logger = require('./core/logging')(this._config);
 		Object.freeze(this._config);
 
+		process.on('uncaughtException', err => {
+			this._logger.error(err);
+		});
+
+		// Eureka
+		require('./eureka').start(this._config);
+
 		// Web server and sockets
 		this._server = restify.createServer({});
 		this.setupWebServer();
