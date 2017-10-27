@@ -2,8 +2,14 @@ const path = require('path');
 const Application = require('./server/app').Application;
 
 let configPath = `${__dirname}/config/default.json`;
-if (process.env.config) {
-	configPath = process.env.config.replace('./', __dirname + '/');
+if (process.argv.some(val => /--config/.test(val))) {
+	configPath = path.join(
+		__dirname,
+		'config',
+		process.argv
+			.filter(val => /--config/.test(val))
+			.map(val => val.split('=')[1])[0]
+	);
 } else if (process.env.ENVIRONMENT) {
 	configPath = path.join(
 		__dirname,
