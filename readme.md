@@ -18,7 +18,7 @@ open http://127.0.0.1:8082/
 This will load the default config file at [config/default.json](config/default.json). If you have an `ENV` environment variable, this will be used instead.
 
 ```sh
-docker run --rm -d -p 127.0.0.1:8082:8080 --env ENV=production fox
+docker run --rm -d -p 127.0.0.1:8082:8080 --env ENVIRONMENT=production fox
 ```
 > Loads `config/production.json`.
 
