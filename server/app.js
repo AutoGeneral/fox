@@ -17,20 +17,9 @@ const DatasourcesLoader = require('./core/datasources.loader');
 const NotificationsLoader = require('./core/notifications.loader');
 
 class Application {
-	/**
-	 * @param {String} configName
-	 */
-	constructor(configName) {
-		try {
-			this._config = require(configName);
-			this._config.debug = this._config.debug || {};
-		} catch (ex) {
-			console.error(
-				`Error! Cannot find config file. Existing now...`,
-				ex
-			);
-			process.exit(1);
-		}
+	constructor(config) {
+		this._config = config;
+		this._config.debug = this._config.debug || {};
 
 		this._logger = require('./core/logging')(this._config);
 		Object.freeze(this._config);
