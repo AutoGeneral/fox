@@ -159,7 +159,7 @@ class CloudwatchDatasource extends AbstractDatasource {
 					.sort((a, b) => (a.timestamp >= b.timestamp ? 1 : -1));
 
 				if (!processedData.length)
-					logger.warn(
+					logger.debug(
 						`Can't extract data from Cloudwatch datasourse. Request: ${JSON.stringify(
 							params
 						)}, response: ${JSON.stringify(data)}`
